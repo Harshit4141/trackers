@@ -1,0 +1,40 @@
+<html>
+    <head>
+<!-- <script src="">
+//     navigator.geolocation.getCurrentPosition(position =>{const{latitude,longitude}=position.coords});
+//     map.innerHTML='<iframe width="700" height="300" src="https://maps.google.com/maps?q='+latitude+','+longitude+'&amp;z=15&amp;output=embed"></iframe>';
+// console.log(latitude);
+
+</script> -->
+<style>
+    #map{
+        width:400px;
+        height:400px;
+    }
+</style>
+
+</script>
+</head>
+<body>
+    <div id="map"></div>
+</body>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDww9XEDUqAgNUDKlORpFzshqh_nFWPdPc&callback=initMap"></script>
+</script>
+<script type="text/javascript">
+    x=navigator.geolocation;
+    x.getCurrentPosition(success);
+    function success(position)
+    {
+        var lat=position.coords.latitude;
+        var long=position.coords.latitude;  
+        var coords=new google.maps.LatLong(lat,long);
+        var mapOptions={
+            zoom:5,
+            center:coords,
+            mapTypeId:google.maps.MapTypeId.ROADMAP
+        }
+        var map=new google.map.Map(document.getElementById("map"),mapOption);
+        var marks=new google.maps.Marker({map:map,position:coords});
+    }
+    </script>
+</html>

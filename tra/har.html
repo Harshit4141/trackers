@@ -1,0 +1,121 @@
+<html>
+    <head>
+
+    </head>
+<body>
+    <h1>hello</h1>
+    <button onclick="getLocation()">get</button>
+    <div id="output"></div>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.js"></script>
+  <script>
+    var x=document.getElementById('output');
+    function getLocation(){
+        if(navigator.geolocation){
+           navigator.geolocation.getCurrentPosition(showPosition); 
+        }
+            else
+            x.innerHTML="browser not supporting";
+    }
+    function showPosition(position){
+        x.innerHTML="lat = "+position.coords.latitude+"<br>"+"long = "+position.coords.longitude;
+    }
+  </script>
+</body>
+<input  class="last_button" type="button" value="Track your Bus Live" onclick=initMap()>
+    <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf8XoaEmSOOSTTrH8sbeKrCocOjsLnkrg&libraries=places"></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDww9XEDUqAgNUDKlORpFzshqh_nFWPdPc&libraries=places"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+<script>
+    let map;
+    let marker;
+    let geocoder;
+    let responseDiv;
+    let response;
+    
+    function initMap() {
+      map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 8,
+        center: { lat: -34.397, lng: 150.644 },
+        mapTypeControl: false,
+      });
+      geocoder = new google.maps.Geocoder();
+    
+      const inputText = document.createElement("input");
+    
+      inputText.type = "text";
+      inputText.placeholder = "Enter a location";
+    
+      const submitButton = document.createElement("input");
+    
+      submitButton.type = "button";
+      submitButton.value = "Geocode";
+      submitButton.classList.add("button", "button-primary");
+    
+      const clearButton = document.createElement("input");
+    
+      clearButton.type = "button";
+      clearButton.value = "Clear";
+      clearButton.classList.add("button", "button-secondary");
+      response = document.createElement("pre");
+      response.id = "response";
+      response.innerText = "";
+      responseDiv = document.createElement("div");
+      responseDiv.id = "response-container";
+      responseDiv.appendChild(response);
+    
+      const instructionsElement = document.createElement("p");
+    
+      instructionsElement.id = "instructions";
+      instructionsElement.innerHTML =
+        "<strong>Instructions</strong>: Enter an address in the textbox to geocode or click on the map to reverse geocode.";
+      map.controls[google.maps.ControlPosition.TOP_LEFT].push(inputText);
+      map.controls[google.maps.ControlPosition.TOP_LEFT].push(submitButton);
+      map.controls[google.maps.ControlPosition.TOP_LEFT].push(clearButton);
+      map.controls[google.maps.ControlPosition.LEFT_TOP].push(instructionsElement);
+      map.controls[google.maps.ControlPosition.LEFT_TOP].push(responseDiv);
+      marker = new google.maps.Marker({
+        map,
+      });
+      map.addListener("click", (e) => {
+        geocode({ location: e.latLng });
+      });
+      submitButton.addEventListener("click", () =>
+        geocode({ address: inputText.value })
+      );
+      clearButton.addEventListener("click", () => {
+        clear();
+      });
+      clear();
+    }
+    
+    function clear() {
+      marker.setMap(null);
+      responseDiv.style.display = "none";
+    }
+    
+    function geocode(request) {
+      clear();
+      geocoder
+        .geocode(request)
+        .then((result) => {
+          const { results } = result;
+    
+          map.setCenter(results[0].geometry.location);
+          marker.setPosition(results[0].geometry.location);
+          marker.setMap(map);
+          responseDiv.style.display = "block";
+          response.innerText = JSON.stringify(result, null, 2);
+          return results;
+        })
+        .catch((e) => {
+          alert("Geocode was not successful for the following reason: " + e);
+        });
+    }
+    
+    window.initMap = initMap;
+</script>
+    </html>

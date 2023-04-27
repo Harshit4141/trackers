@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../Style/main2.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<body>
+    <form>
+    <section class="firstsec">
+        <div class="logo">
+            <span class="firspan"><h1>FindMyBus</h1></span>
+            <!-- <span class="home"><a href="#home" id="link">Home</a></span>
+            <span class="services"><a href="#service" id="link">Services</a></span>
+            <span class="About"><a href="#" id="link">About</a></span>
+            <span class="Contact"><a href="#" id="link">Contact</a></span> -->
+            <span class="profile"><a href="../File/index.html"><input type="button" class="d" value="Sign-out"></a></span>
+        </div>
+    </section>
+
+    <section class="secondsec">
+        <div class="user_name"><p>"Welcome Back,<%- user.name %>!"</p></div>
+        <!-- <div class="bus"><img  src="../Images/bu22.gif" alt=""></div> -->
+    </section>
+    <section class="thirdsec">
+        <div class="img1">
+            <img  class="imgbus" src="../Images/choose_bus3.jpg" alt="">
+        </div>
+        <div class="but1">
+            <div class="b1"><select class="choosebus"value="choose bus">
+                <option value="choose bus"><%- user.bus_no%></option>
+                <option value="K1">K1</option>
+                <option value="K2">K2</option>
+                <option value="G1">G1</option>
+                <option value="G2">G2</option>
+                <option value="D1">D1</option>
+                <option value="D2">D2</option>
+                <option value="J1">J1</option>
+                <option value="J2">J2</option>
+                <option value="A1">A1</option>
+                <option value="A2">A2</option>
+            </select></div>
+            <div class="b2"><select class="Boarding">
+                <option value="Boarding From"><%- user.address %></option>
+                <option value="Naini">Naini</option>
+                <option value="Civil lines">Civil line</option>
+                <option value="Bandi patti">Bandi patti</option>
+                <option value="Chowk">Chowk</option>
+                <option value="Buxi Bazar">Buxi Bazar</option>
+                <option value="Johnston Ganj">Johnston Ganj</option>
+                <option value="Krishna Nagar">Krishna Nagar</option>
+                <option value="Minhaj Pur">Minhaj Pur</option>
+                <option value="Company Garden">Company Garden</option>
+            </select></div>
+        </div>
+    </section>
+
+    <section class="fifthsec">
+        <a href="./map.html"><input  class="last_button" type="button" value="Track your Bus Live" onclick=initMap()></a>
+        
+<!-- footer -->
+    <footer class="sp" id="About">
+        <div class="pp">
+            <div class="sec aboutus">
+                <h2>About Us</h2>
+                <p class="b"><img src="../Images/bus-pngrepo-com.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FindMyBus</p>
+                <p>FindMyBus has been developed to manage the bus tracking system so that every student is on time without getting late.It is very feasible Software for the faculties as well as for the students, they can access the bus location from anywhere.
+                </p>
+            </div>
+            <div class="sec quicklinks">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="#homes">Home</a></li>
+                    <li><a href="#About">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="./login.html">Sign in</a></li>
+                </ul>
+            </div>
+            <div class="sec" id="Contact">
+                 <h2>Contact Info</h2>     
+                <p><img src="../Images/google-map.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Prayagraj,Uttar Pradesh</p>
+                <p><img src="../Images/phone-pngrepo-com.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;907654994,9721486231</p>
+                <p><img src="../Images/gmail.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tripathiiteesha@gmail.com</p>
+                <p><img src="../Images/24-hours.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;24/7</p>
+            </div>
+        </div>
+    </footer>
+    <div class="credit">United College of Engineering and Research, Naini, Prayagraj</div>
+
+    <!-- </section> -->
+<!-- <section class="sixthsec"> -->
+    <!-- <div id="map"></div> -->
+<!-- </section> -->
+
+    </form>
+    <script src="../Script/jk.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>  
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiaCPUGjku0VjkEQqmy-G7cIV7HJNzM1Q">
+    </script>
+</body>
+</html>

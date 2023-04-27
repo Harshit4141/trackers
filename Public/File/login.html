@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../Style/log.css">
+    
+</head>
+<body>
+    <div class="alert" name="alert_1">
+
+    </div>
+    <div id="form">
+        <form action="/login" method="post" name="form1">
+            <div class="box"><br>
+                <h1 align="center"><b>Login</b></h1>
+                <div class="inside_box">
+                    <label for="">ID:</label>
+                    <br>
+                    <input type="text" class="top" placeholder="Student ID" name="ID" required>
+                </div>
+                <div class="inside_box"><label for="">Password:</label><br><input type="password" class="top" Placeholder="Password" name="password" required></div>
+                <div class="inside_box"><button type="submit" class="inside_button" onclick="log_validation();">Sign in</button></div>
+                <h4 align="center">Forget Password?<a href="#"class="reSet">Reset</a></h4>
+        </div>
+        </form>
+        </div>
+        <script src="../Script/login.js"></script> 
+</body>
+</html>
